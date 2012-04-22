@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module Micropayment
   class Debit
 
@@ -6,11 +8,16 @@ module Micropayment
     class << self
 
       def execute(method, data={})
-        self.call(URL, method, data)
+        API.call(URL, method, data)
       end
 
+      # löscht alle Kunden und Transaktionen in der Testumgebung
       def reset_test
-        self.execute(:resetTest, :testMode => 1)
+        execute(:resetTest, :testMode => 1)
+      end
+
+      def customerCreate
+        execute(:customerCreate)
       end
 
     end

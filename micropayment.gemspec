@@ -17,7 +17,20 @@ Gem::Specification.new do |s|
     "README.rdoc"
   ]
   s.files = [
-    "VERSION"
+    ".document",
+    ".rvmrc",
+    "Gemfile",
+    "Gemfile.lock",
+    "LICENSE.txt",
+    "README.rdoc",
+    "Rakefile",
+    "VERSION",
+    "lib/micropayment.rb",
+    "lib/services/api.rb",
+    "lib/services/debit.rb",
+    "micropayment.gemspec",
+    "test/helper.rb",
+    "test/test_micropayment.rb"
   ]
   s.homepage = "http://github.com/GeneralScripting/micropayment"
   s.licenses = ["MIT"]
