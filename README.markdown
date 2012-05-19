@@ -3,7 +3,26 @@
 Implemantation of the NVP API provided by micropayment.de.
 WIP
 
-== Contributing to mp
+== Installation
+
+```
+gem install micropayment
+```
+
+== Usage
+
+```
+require 'micropayment'
+
+Micropayment::Config.api_key = 'api_access_key_from_micropayment_de'
+
+Micropayment::Config.sandbox = 1
+
+Micropayment::Debit.customerList
+#=> { "error"=>"0", "count"=>"2", "maxCount"=>"2", "customerIdList"=>["id1", "id2"] }
+```
+
+== Contributing to micropayment
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
@@ -15,6 +34,5 @@ WIP
 
 == Copyright
 
-Copyright (c) 2012 General Scripting UG (haftungsbeschränkt). See LICENSE.txt for
-further details.
+Copyright (c) 2012 General Scripting UG (haftungsbeschränkt). See LICENSE.txt for further details.
 

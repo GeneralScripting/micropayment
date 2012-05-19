@@ -26,18 +26,24 @@ module Micropayment
       end
 
       # "legt neuen Kunden an"
-      def customerCreate
-        execute(:customerCreate)
+      def customerCreate(options={})
+        assert_valid_keys(options, :customerId, :freeParams)
+        assert_keys_exists(options, :customerId)
+        execute(:customerCreate, options)
       end
 
       # "ordnet weitere freie Parameter dem Kunden zu, oder ändert sie"
-      def customerSet(customer_id, free_params=nil)
-        execute(:customerSet, { :customerId => customer_id })
+      def customerSet(options={})
+        assert_valid_keys(options, :customerId, :freeParams)
+        assert_keys_exists(options, :customerId)
+        execute(:customerSet, options)
       end
 
       # "ermittelt alle freien Parameter des Kunden"
-      def customerGet(customer_id)
-        execute(:customerGet, :customerId => customer_id)
+      def customerGet(options={})
+        assert_valid_keys(options, :customerId)
+        assert_keys_exists(options, :customerId)
+        execute(:customerGet, options)
       end
 
       # "ermittelt alle Kunden"

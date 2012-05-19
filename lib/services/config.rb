@@ -10,10 +10,6 @@ module Micropayment
       attr_accessor *VALID_OPTION_KEYS
     end
 
-    def self.setup
-      #Micropayment::Config.url = BASE_URL
-    end
-
   end
 
 end

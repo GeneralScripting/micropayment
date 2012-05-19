@@ -8,13 +8,6 @@ module Micropayment
   autoload :API,      'services/api'
   autoload :Debit,    'services/debit'
 
-  def self.setup
-    Micropayment::Config.setup
-    yield Micropayment::Config
-    Micropayment::Config.complete = true
-    Micropayment::Config
-  end
-
   def self.assert_valid_keys(opts, *valid_keys)
     valid_keys.flatten!
     opts.each_key do |k|
