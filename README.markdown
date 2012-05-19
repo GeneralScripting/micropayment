@@ -1,7 +1,46 @@
 = micropayment
 
 Implemantation of the NVP API provided by micropayment.de.
-WIP
+If you want to use it in your Rails project please use [micropayment-rails](...)
+
+WIP!
+
+== Installation
+
+    gem install micropayment
+
+== Usage
+
+First you need to setup at least your API key:
+
+    Micropayment::Config.api_key = 'xxx'
+
+Let's try out a test payment using direct debit:
+
+```
+# create a customer
+customer = Micropayment::Debit.customerCreate(
+  :firstName  => 'Jeff',
+  :lastName   => 'Winger'
+)
+
+# add a bank account to the customer
+Micropayment::Debit.bankaccountSet(
+  :customerId     => customer.customerId,
+  :bankCode       => '10010010',
+  :accountNumber  => 'something_valid',
+  :accountHolder  => "#{customer.firstName} #{customer.lastName}"
+)
+
+# create a session
+Micropayment::Debit.sessionCreate(
+  :customerId => customer.customerId,
+  :project    => 'your-project-key',
+  :amount     => 10.00,
+  :payText    => 'Thank you for ...'
+)
+```
+
 
 == Installation
 

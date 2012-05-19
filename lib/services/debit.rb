@@ -54,8 +54,8 @@ module Micropayment
 
       # "erzeugt oder ändert Bankverbindung eines Kunden"
       def bankaccountSet(options={})
-        assert_valid_keys(options, :customerId, :bankVode, :accountNumber, :accountHolder, :country)
-        assert_keys_exists(options, :customerId, :bankVode, :accountNumber, :accountHolder)
+        assert_valid_keys(options, :customerId, :bankCode, :accountNumber, :accountHolder, :country)
+        assert_keys_exists(options, :customerId, :bankCode, :accountNumber, :accountHolder)
         execute(:bankaccountSet, options)
       end
 
