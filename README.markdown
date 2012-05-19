@@ -1,19 +1,22 @@
-= micropayment
+# micropayment
 
 Implemantation of the NVP API provided by micropayment.de.
-If you want to use it in your Rails project please use [micropayment-rails](...)
+If you want to use it in your Rails project please use [micropayment-rails](https://github.com/GeneralScripting/micropayment-rails)
+
 
 WIP!
 
-== Installation
+## Installation
 
     gem install micropayment
 
-== Usage
+## Usage
 
 First you need to setup at least your API key:
 
     Micropayment::Config.api_key = 'xxx'
+    # to enter sandbox mode:
+    Micropayment::Config.sandbox = 1
 
 Let's try out a test payment using direct debit:
 
@@ -33,35 +36,25 @@ Micropayment::Debit.bankaccountSet(
 )
 
 # create a session
-Micropayment::Debit.sessionCreate(
+session = Micropayment::Debit.sessionCreate(
   :customerId => customer.customerId,
   :project    => 'your-project-key',
   :amount     => 10.00,
   :payText    => 'Thank you for ...'
 )
+
+Micropayment::Debit.sessionApprove(
+  :sessionId  => session["sessionId"]
+)
 ```
 
-
-== Installation
-
 ```
-gem install micropayment
-```
-
-== Usage
-
-```
-require 'micropayment'
-
-Micropayment::Config.api_key = 'api_access_key_from_micropayment_de'
-
-Micropayment::Config.sandbox = 1
-
 Micropayment::Debit.customerList
 #=> { "error"=>"0", "count"=>"2", "maxCount"=>"2", "customerIdList"=>["id1", "id2"] }
 ```
 
-== Contributing to micropayment
+
+## Contributing to micropayment
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
@@ -71,7 +64,7 @@ Micropayment::Debit.customerList
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
-== Copyright
+## Copyright
 
 Copyright (c) 2012 General Scripting UG (haftungsbeschränkt). See LICENSE.txt for further details.
 
