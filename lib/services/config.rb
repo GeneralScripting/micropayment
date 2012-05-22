@@ -8,6 +8,10 @@ module Micropayment
 
     class << self
       attr_accessor *VALID_OPTION_KEYS
+
+      def sandbox_param
+        sandbox ? 1 : nil
+      end
     end
 
   end
